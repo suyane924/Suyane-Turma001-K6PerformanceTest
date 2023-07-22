@@ -4,7 +4,7 @@ import { Trend, Counter } from "k6/metrics";
 
 export const getDuration = new Trend('GET', true);
 
-export default class example {
+export default class Example {
   constructor() {
     this.baseUrl = "https://test.k6.io";
   }
