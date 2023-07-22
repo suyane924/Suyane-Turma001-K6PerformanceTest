@@ -1,0 +1,23 @@
+{
+  "name": "k6-example",
+  "version": "1.0.0",
+  "description": "performance test example with k6",
+  "main": "index.js",
+  "scripts": {
+    "test": "k6 --vus 1 --duration 1s run src/tests/Get.spec.js"
+  },
+  "devDependencies": {
+    "k6": "^0.0.0",
+    "prettier": "^2.8.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ugioni/k6-example.git"
+  },
+  "author": "leandro.ugioni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ugioni/k6-example/issues"
+  },
+  "homepage": "https://github.com/ugioni/k6-example#readme"
+}
