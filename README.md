@@ -1,3 +1,3 @@
-# k6-example
+# k6-performance-testing
 
-performance test with k6
+Performance test with Grafana K6

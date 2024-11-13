@@ -1,7 +1,7 @@
 {
-  "name": "k6-example",
+  "name": "k6-performance-testing",
   "version": "1.0.0",
-  "description": "performance test example with k6",
+  "description": "api performance tests with k6",
   "main": "index.js",
   "scripts": {
     "format": "prettier --write \"**/**.[jt]s?(x)\"",
