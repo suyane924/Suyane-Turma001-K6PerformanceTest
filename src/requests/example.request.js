@@ -1,30 +1,39 @@
-import http from "k6/http";
-import { check, sleep } from "k6";
-import { Trend, Counter } from "k6/metrics";
+import http from 'k6/http';
+import { check, sleep } from 'k6';
+import { Trend } from 'k6/metrics';
 
-export const getDuration = new Trend('GET', true);
+export const getContactsDuration = new Trend('get_contacts', true);
 
 export default class Example {
   constructor() {
-    this.baseUrl = "https://test.k6.io";
+    this.baseUrl = 'https://test.k6.io/';
   }
 
-  getK6() {
+  getContacts() {
+    const payload = {
+      client_id: '44984984649',
+      grant_type: 'password',
+      username: ' jmfilho@sp.gov.br',
+      password: '123456'
+    };
+
     const params = {
       headers: {
-        "Content-Type": "application/json",
-      },
+        'Content-Type': 'application/json'
+      }
     };
 
     const OK = 200;
 
+    //const res = http.get(`${this.baseUrl}`, payload, params);
     const res = http.get(`${this.baseUrl}`, params);
-    sleep(1);
+    //const token = 'Bearer ' + res.json('access_token');
 
-    getDuration.add(res.timings.duration);
+    getContactsDuration.add(res.timings.duration);
 
     check(res, {
-      "get - status 200": () => res.status === OK,
+      'get contacts - status 200': () => res.status === OK
     });
+    //return token;
   }
 }

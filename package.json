@@ -4,20 +4,13 @@
   "description": "performance test example with k6",
   "main": "index.js",
   "scripts": {
-    "test": "k6 --vus 1 --duration 1s run src/tests/Get.spec.js"
+    "format": "prettier --write \"**/**.[jt]s?(x)\"",
+    "verify": "prettier --check \"**/**.[jt]s?(x)\"",
+    "test": "k6 --vus 10 --duration 10s run src/tests/Tests.spec.js",
+    "ci": "npm run format && npm run verify && npm run test"
   },
   "devDependencies": {
     "k6": "^0.0.0",
-    "prettier": "^2.8.8"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ugioni/k6-example.git"
-  },
-  "author": "leandro.ugioni",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ugioni/k6-example/issues"
-  },
-  "homepage": "https://github.com/ugioni/k6-example#readme"
+    "prettier": "^3.3.3"
+  }
 }
