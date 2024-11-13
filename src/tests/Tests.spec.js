@@ -14,7 +14,8 @@ export const options = {
 
 export function handleSummary(data) {
   return {
-    './src/output/index.html': htmlReport(data)
+    './src/output/index.html': htmlReport(data),
+    stdout: textSummary(data, { indent: ' ', enableColors: true })
   };
 }
 
