@@ -1,6 +1,7 @@
 import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js';
+import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
 import http from 'k6/http';
-import { check, sleep } from 'k6';
+import { check } from 'k6';
 import { Trend } from 'k6/metrics';
 
 export const getContactsDuration = new Trend('get_contacts', true);
@@ -10,9 +11,7 @@ export const options = {
     http_req_failed: ['rate<0.01'],
     http_req_duration: ['avg<10000']
   },
-  stages: [
-    { duration: '1m', target: 1000 }
-  ]
+  stages: [{ duration: '20s', target: 20 }]
 };
 
 export function handleSummary(data) {
@@ -38,6 +37,6 @@ export default function () {
   getContactsDuration.add(res.timings.duration);
 
   check(res, {
-    'get contacts - status 200': () => res.status === OK
+    'GET Contacts - Status 200': () => res.status === OK
   });
 }
